@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Poppins', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+  @apply text-navy-900 antialiased;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-heading);
+  @apply font-medium tracking-tight;
+}
+
+.container {
+  @apply px-4 mx-auto;
+  max-width: 1280px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(20px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.5s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+/* Product card */
+.product-card {
+  @apply transition-all duration-300 bg-white rounded-lg shadow-sm hover:shadow-md;
+}
+
+.product-image {
+  @apply relative overflow-hidden rounded-t-lg aspect-[3/4];
+}
+
+.product-badge {
+  @apply absolute top-2 left-2 px-2 py-1 text-xs font-medium text-white bg-gold-500 rounded-full;
+}
+
+.quick-view-button {
+  @apply absolute bottom-0 left-0 right-0 py-3 font-medium text-center text-white transition-all duration-300 translate-y-full bg-navy-900 bg-opacity-90;
+}
+
+.product-card:hover .quick-view-button {
+  @apply translate-y-0;
+}
+
+/* Button styles */
+.btn {
+  @apply inline-flex items-center justify-center px-6 py-3 font-medium transition-all duration-200 rounded-md;
+}
+
+.btn-primary {
+  @apply text-white bg-navy-900 hover:bg-navy-800;
+}
+
+.btn-secondary {
+  @apply text-navy-900 bg-cream-100 hover:bg-cream-200;
+}
+
+.btn-gold {
+  @apply text-navy-900 bg-gold-500 hover:bg-gold-400;
+}
+
+.btn-outline {
+  @apply text-navy-900 border border-navy-200 hover:bg-navy-50;
+}
+
+/* Category navigation */
+.category-link {
+  @apply relative px-4 py-2 font-medium transition-all duration-200;
+}
+
+.category-link:after {
+  content: '';
+  @apply absolute bottom-0 left-0 w-0 h-0.5 bg-gold-500 transition-all duration-300;
+}
+
+.category-link:hover:after,
+.category-link.active:after {
+  @apply w-full;
+}
+
+/* Custom checkbox */
+.custom-checkbox {
+  @apply relative flex items-center;
+}
+
+.custom-checkbox input {
+  @apply absolute opacity-0 w-0 h-0;
+}
+
+.checkmark {
+  @apply inline-block w-5 h-5 mr-2 border border-navy-300 rounded;
+}
+
+.custom-checkbox input:checked ~ .checkmark {
+  @apply bg-navy-900 border-navy-900;
+}
+
+.checkmark:after {
+  content: "";
+  @apply absolute hidden;
+}
+
+.custom-checkbox input:checked ~ .checkmark:after {
+  @apply block;
+}
+
+.custom-checkbox .checkmark:after {
+  @apply left-[7px] top-[3px] w-[6px] h-[10px] border-r-2 border-b-2 border-white transform rotate-45;
+}
